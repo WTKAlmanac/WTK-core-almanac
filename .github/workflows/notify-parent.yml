@@ -1,0 +1,22 @@
+name: Notify Parent Repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify-parent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send repository_dispatch to parent repository
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_REPO_DISPATCH_TOKEN }}
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            https://api.github.com/repos/WTKAlmanac/WTK-almanac-website/dispatches \
+            -d '{"event_type":"submodule-updated","client_payload":{"target_branch":"v4"}}'

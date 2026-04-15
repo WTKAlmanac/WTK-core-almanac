@@ -1,0 +1,3 @@
+[submodule ".obsidian/plugins/paste-image-webp-renamer"]
+	path = .obsidian/plugins/paste-image-webp-renamer
+	url = https://github.com/WTKAlmanac/paste-image-webp-renamer.git
